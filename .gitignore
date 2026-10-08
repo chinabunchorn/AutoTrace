@@ -1,0 +1,21 @@
+# Local caches and dependencies
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.pytest_cache/
+
+# Secrets; intentionally sanitized examples may be tracked
+.env
+.env.*
+!.env.example
+
+# Private source notes, uploads, machine setup and agent state
+/.local/
+/.hermes/
+
+# Generated traces, reports and evaluation artifacts stay local by default
+/outputs/*
+!/outputs/.gitkeep
