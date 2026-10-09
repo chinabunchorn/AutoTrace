@@ -1,6 +1,6 @@
 # AutoTrace — Development Plan
 
-**Status:** project structure and documentation approved; application implementation awaits explicit user approval.
+**Status:** project structure, documentation and publication of reusable reference/assets approved; application implementation awaits explicit user approval.
 
 **Purpose:** define assignable coding work, shared interfaces, expected outputs and verification. Owners are unassigned until people agree on them. Folder creation does not complete a feature. Read [AGENTS.md](AGENTS.md) and [contracts/README.md](contracts/README.md) first.
 
@@ -50,6 +50,7 @@ What-if references: burn-positive with R=250 t gives no deficit; changed PDF R=3
 ## 4. Architecture and outputs
 
 - `frontend/`: v2-derived static HTML/compiled styling/local fonts and vanilla JS, no framework migration.
+- Supplied design inputs: [historical standalone v2](docs/reference/autotrace-v2.html), original imagery/provenance, matching typography/icon, illustrative photo and licenses. Read [docs/assets.md](docs/assets.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); verify [asset-manifest.json](frontend/assets/asset-manifest.json). The archive is not the new application and its old extraction/assessment behavior must be replaced.
 - `backend/`: one loopback-only Python helper; `ingestion/`, `geospatial/`, `assessment/` are separate modules in that process, not microservices.
 - `contracts/`: one shared definition for document/review/origin/provider/calculation/evaluation records.
 - `data/documents/`: fictional text PDFs; `data/origins/`: matching geometry/period fixtures; `data/scenarios/`: synthetic burn/production records.
@@ -63,7 +64,7 @@ The pitch requires no external network after local assets/dependencies are prepa
 
 ### Image/geometry requirements
 
-Real imagery: 26 January and 12 March 2021, original Thailand context. Preserve original files/hashes/source attribution. Synthetic overlays remain separate. The original presentation used UTM EPSG:32647 crop/resize; reconstruct precise frame mapping and account for viewer object-fit, rather than mapping geographic bbox percentages blindly.
+Real imagery: supplied `frontend/assets/before.webp` and `after.webp`, 26 January and 12 March 2021, original Thailand context. Preserve original files/hashes/source attribution and the Copernicus modified-data notice. Synthetic overlays remain separate. `frontend/assets/image-frame-source.json` records source UTM EPSG:32647 affine/shape and the original crop/resize method; reconstruct/test the exact rounded crop/display frame and account for viewer object-fit, rather than mapping geographic bbox percentages blindly. Original MODIS/WorldCereal manifest entries are archive-only context, not scenario inputs.
 
 Proposed cultivation square UTM bounds: `[715450,1844200,716450,1845200]`; burn-positive rectangle: `[715450,1844200,715850,1845200]`. Validate that both lie within the actual supplied image frame before using them. These are fictional geometry, not registered farms. Calculate union/intersection areas in a suitable metre CRS; keep full precision. The two cases use alternative layers over the same base.
 
@@ -121,6 +122,6 @@ After actual acceptance verification, claim a working human-reviewed controlled 
 
 ## 9. Remaining approval and prerequisite boundary
 
-No blocking product clarification remains for structuring the repository. Owners are intentionally unassigned. Defaults and implementation still need explicit approval. Authorized portable v2/assets/provenance are needed for implementation, but no local absolute paths should appear in shared developer docs. Missing artifacts/tools are specific blockers; never fabricate them. Private discovery notes are retained in ignored local storage.
+No blocking product clarification remains for structuring the repository. Owners are intentionally unassigned. Portable v2/reference assets and provenance are supplied; defaults and application implementation still need explicit approval. Exact frame reconstruction, fictional PDFs/AOI/scenario records, dependency setup and application tests remain unfinished. No personal filesystem paths should appear in shared developer docs. Missing artifacts/tools are specific blockers; never fabricate them.
 
 **Stop before application implementation until the user explicitly approves that work.**

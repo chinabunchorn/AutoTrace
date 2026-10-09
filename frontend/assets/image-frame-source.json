@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "kind": "source_projection_and_render_metadata",
+  "requested_bbox_wgs84": [
+    100.95,
+    16.6,
+    101.1,
+    16.75
+  ],
+  "source_items": [
+    {
+      "item_id": "S2A_47QQU_20210126_0_L2A",
+      "source_metadata_sha256": "dd625be70d39f62ac98ca81c959fade9f63b5f92c78041b47e0761374369c2f9",
+      "source_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/47/Q/QU/2021/1/S2A_47QQU_20210126_0_L2A/TCI.tif",
+      "source_crs_epsg": 32647,
+      "source_raster_shape_rows_cols": [
+        10980,
+        10980
+      ],
+      "source_affine_a_b_c_d_e_f": [
+        10,
+        0,
+        699960,
+        0,
+        -10,
+        1900020
+      ]
+    },
+    {
+      "item_id": "S2B_47QQU_20210312_0_L2A",
+      "source_metadata_sha256": "e1f0b80bb35b5c939f42d07a9861ccf567433901f0bafa7e61fab89719b38048",
+      "source_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/47/Q/QU/2021/3/S2B_47QQU_20210312_0_L2A/TCI.tif",
+      "source_crs_epsg": 32647,
+      "source_raster_shape_rows_cols": [
+        10980,
+        10980
+      ],
+      "source_affine_a_b_c_d_e_f": [
+        10,
+        0,
+        699960,
+        0,
+        -10,
+        1900020
+      ]
+    }
+  ],
+  "original_render_method": {
+    "crop": "Rasterio transform_bounds from EPSG:4326 to source CRS, from_bounds using source affine, then round_offsets and round_lengths",
+    "read_bands": [
+      1,
+      2,
+      3
+    ],
+    "resampling": "bilinear",
+    "presentation_shape_rows_cols": [
+      1400,
+      1400
+    ],
+    "webp_quality": 92
+  },
+  "method_basis": "Inspected original image-preparation source; selected projection fields extracted from original Sentinel STAC metadata.",
+  "display_frame_status": "Exact rounded crop window, display affine and viewer object-fit alignment require reconstruction and tests during W3.",
+  "not_a_cultivation_boundary": true
+}

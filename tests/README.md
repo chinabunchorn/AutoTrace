@@ -12,6 +12,7 @@ Verify actual software behavior and controlled scenario processing, not real agr
 - `fixtures/` holds independent oracles and mutation/corrupt/unsupported test inputs. Do not calculate oracle values from the implementation under test or import them into runtime.
 - Browser/offline QA utilities belong in `scripts/`; their results join unit/integration evidence under ignored `outputs/`.
 - Record actual commands/exit codes, versions/input fingerprints, expected/observed values, tolerances and per-case/per-field outcomes.
+- Use [asset-manifest.json](../frontend/assets/asset-manifest.json) as the preservation reference for supplied assets; read [docs/assets.md](../docs/assets.md) for archive-only inputs and unfinished frame checks. Asset identity/browser-loading checks are not application acceptance tests. The original imagery manifest's legacy overlay entries are intentionally not standalone runtime files.
 
 ## Required test matrix
 

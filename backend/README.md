@@ -22,6 +22,8 @@ Backend must enforce confirmed immutable revisions/snapshots, not trust a UI che
 
 These folders use this shared guide; separate readmes for each small component are unnecessary. Keep provider/extraction/geometry/production/math/reporting implementations separate internally to prevent fixture coupling. Coordinate contracts before parallel work.
 
+For W3, supplied imagery/provenance and source projection metadata are listed in [../docs/assets.md](../docs/assets.md). Use `frontend/assets/image-frame-source.json` to reconstruct/test the exact rounded crop/display transform. It is preparation metadata, not a completed ImageryFrame or AOI fixture. The old manifest's context-overlay entries and the archived v2 outputs must not become scenario-provider answers.
+
 ## Calculation and semantic guards
 
 C=Q(1−b), B_min=max(0,R−C), s_min=B_min/R only for R>0. R is purchases from this AOI/period; no factory-capacity/whole-company denominator. R=0 → no purchases/null share. Unknown stock/replacement stays unknown; nonzero replacements or R>Q under closed-origin assumptions cannot produce a confident scenario assessment.

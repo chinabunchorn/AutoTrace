@@ -1,0 +1,60 @@
+[
+  {
+    "file": "before.webp",
+    "item_id": "S2A_47QQU_20210126_0_L2A",
+    "datetime": "2021-01-26T03:53:39.777000Z",
+    "bbox": [
+      100.95,
+      16.6,
+      101.1,
+      16.75
+    ],
+    "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/47/Q/QU/2021/1/S2A_47QQU_20210126_0_L2A/TCI.tif",
+    "render": "Sentinel-2 true color TCI, shared crop window; resized for presentation; unmodified burn appearance",
+    "sha256": "7b6e8b8be0d26df1432eedf94c6a15a5c963eafa6bbb7710cac991bf75e9666a"
+  },
+  {
+    "file": "after.webp",
+    "item_id": "S2B_47QQU_20210312_0_L2A",
+    "datetime": "2021-03-12T03:53:38.593000Z",
+    "bbox": [
+      100.95,
+      16.6,
+      101.1,
+      16.75
+    ],
+    "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/47/Q/QU/2021/3/S2B_47QQU_20210312_0_L2A/TCI.tif",
+    "render": "Sentinel-2 true color TCI, shared crop window; resized for presentation; unmodified burn appearance",
+    "sha256": "09c386fbb5db981b8de03cd95be56e860dd36a137f1d1c1b5a41232419cfa036"
+  },
+  {
+    "file": "burn-overlay.png",
+    "source": "MODIS MCD64A1 February 2021 Burn_Date",
+    "bbox": [
+      100.95,
+      16.6,
+      101.1,
+      16.75
+    ],
+    "display": "Observed raw positive cells without a validated crop-specific or QA-filtered burn classification",
+    "positive_render_pixels": 10294,
+    "native_resolution_m": 500,
+    "NOT": "maize-specific burned area or tonnes"
+  },
+  {
+    "file": "maize-overlay.png",
+    "source": "WorldCereal selected season classification",
+    "bbox": [
+      100.95,
+      16.6,
+      101.1,
+      16.75
+    ],
+    "class_counts": {
+      "0": 16236,
+      "100": 36,
+      "254": 983728
+    },
+    "NOT": "verified harvest or factory purchases"
+  }
+]

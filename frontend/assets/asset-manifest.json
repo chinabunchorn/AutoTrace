@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "purpose": "Integrity inventory of supplied design reference and reusable assets; not assessment results.",
+  "reference_is_application": false,
+  "license_sources": [
+    {
+      "path": "frontend/assets/licenses/DM-Sans-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt"
+    },
+    {
+      "path": "frontend/assets/licenses/IBM-Plex-Sans-Thai-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsansthai/OFL.txt"
+    },
+    {
+      "path": "frontend/assets/licenses/Tailwind-MIT.txt",
+      "source_url": "https://raw.githubusercontent.com/tailwindlabs/tailwindcss/v3.4.17/LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/reference/autotrace-v2.html",
+      "role": "historical_design_reference",
+      "bytes": 4471793,
+      "sha256": "b41e1c4737b400ec21229d19b3944d6b8bc79e46ecebfdbebabe10aade342e0e"
+    },
+    {
+      "path": "frontend/assets/after.webp",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 466074,
+      "sha256": "09c386fbb5db981b8de03cd95be56e860dd36a137f1d1c1b5a41232419cfa036"
+    },
+    {
+      "path": "frontend/assets/before.webp",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 596798,
+      "sha256": "7b6e8b8be0d26df1432eedf94c6a15a5c963eafa6bbb7710cac991bf75e9666a"
+    },
+    {
+      "path": "frontend/assets/factory-provenance.json",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 751,
+      "sha256": "1277ff63f38083eb6c2bd85c5ce44d72652aff1b219dcc10a601d3eea532039c"
+    },
+    {
+      "path": "frontend/assets/factory.webp",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 250512,
+      "sha256": "8859a0049e031171dacaf33439b51433d41859d1b0295420294c82e5573c1de9"
+    },
+    {
+      "path": "frontend/assets/favicon.svg",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 225,
+      "sha256": "1cad9de92af1f95c06ab952eb2a5eb84146d2acf47cd3e52238a3c31287afd05"
+    },
+    {
+      "path": "frontend/assets/font-0b8ffacb1806.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 1412,
+      "sha256": "5263ddce7b6879a70b56958b66512940e58ff364b619fe4f2815a31555a6b2c7"
+    },
+    {
+      "path": "frontend/assets/font-12e19ed47452.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 1408,
+      "sha256": "5a279f39a8564edf37ef2be39450e4c6e2c81845c85eaff909c808f133fe769c"
+    },
+    {
+      "path": "frontend/assets/font-1713e5de85e1.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 6356,
+      "sha256": "20e71a8635466748fba07aa4dfd8ba2e2f00fb9480cf490357735a6101e2604f"
+    },
+    {
+      "path": "frontend/assets/font-1a1eede99719.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 11804,
+      "sha256": "2d66381c26d32bf2a95bfe559d1a5ed5475fcdac3fa128e45a33301010d42056"
+    },
+    {
+      "path": "frontend/assets/font-1a61d4815dc0.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 17736,
+      "sha256": "82ddd36544e4776857cce6ab26d0e509d10c1eeddf872c1b16f421489b0096a7"
+    },
+    {
+      "path": "frontend/assets/font-270a5a8df2a9.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 6248,
+      "sha256": "5dd17f81b73f5d230276b51e671b6c1947f7b9e0310b4dc900e410baa35740e7"
+    },
+    {
+      "path": "frontend/assets/font-37fdf210f71b.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 11716,
+      "sha256": "7e01c133031aba4ca902d81930096f0224d83f808014c1232016b49e0a7ecff6"
+    },
+    {
+      "path": "frontend/assets/font-3bfe4586eb9a.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 18228,
+      "sha256": "a5d38fe99f930275684999b462c7123faa063d9e44e73b4b241723d884aa0f49"
+    },
+    {
+      "path": "frontend/assets/font-55acc9dde6be.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 18520,
+      "sha256": "50cf74f017a2d3a07154e829a48d259c52cb4c068e80bed3b75a3dbe024d7168"
+    },
+    {
+      "path": "frontend/assets/font-713ca32c3c8b.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+    },
+    {
+      "path": "frontend/assets/font-844f553cbff2.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 18992,
+      "sha256": "2a1bc932c82cf188c06d8f29797dd31bc0604229571e08f340d816aa9e4014b4"
+    },
+    {
+      "path": "frontend/assets/font-ce3d55c5c39f.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 11804,
+      "sha256": "ea935955dc3bccb684f8fb772dbd429250dd0d3dfee9483995a3ee3456471df8"
+    },
+    {
+      "path": "frontend/assets/font-d1517d257b28.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 1400,
+      "sha256": "136351364139213e44077b6fe0ae53ac417ae8d36dd499a1175a2471ff3c1362"
+    },
+    {
+      "path": "frontend/assets/font-f7d0cddf8725.woff2",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 6276,
+      "sha256": "1c5d96f1c642f4c6de3f79ea757212e728bf8d5c46599983f8f7115563d77491"
+    },
+    {
+      "path": "frontend/assets/fonts.css",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 6141,
+      "sha256": "9e397333e3643ae397cc820d30b69fcb3c13e2d196006af842e9fe87917a3560"
+    },
+    {
+      "path": "frontend/assets/imagery-provenance.json",
+      "role": "presentation_asset_or_provenance",
+      "bytes": 1768,
+      "sha256": "52f14c7dece74e02d12263fbeda8e643ca0abdaa8474322d0b9189a95af72496"
+    },
+    {
+      "path": "frontend/assets/licenses/DM-Sans-OFL.txt",
+      "role": "license_notice",
+      "bytes": 4482,
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "path": "frontend/assets/licenses/IBM-Plex-Sans-Thai-OFL.txt",
+      "role": "license_notice",
+      "bytes": 4456,
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "path": "frontend/assets/licenses/Tailwind-MIT.txt",
+      "role": "license_notice",
+      "bytes": 1071,
+      "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985"
+    },
+    {
+      "path": "frontend/assets/image-frame-source.json",
+      "role": "source_projection_metadata",
+      "bytes": 1921,
+      "sha256": "e8c5da2e87eafa61259adefb8f2a242967c93950cf0c90fc6aa8a2d1102a5e6c"
+    }
+  ],
+  "limitations": [
+    "Historical v2 extraction uses fixed demo values; it is not the implemented PDF-to-assessment application.",
+    "MODIS/WorldCereal overlays embedded in the historical reference are context only and are not scenario provider inputs.",
+    "Original imagery-provenance.json includes legacy overlay entries whose standalone PNG files are intentionally not imported.",
+    "Exact projected crop/display-frame reconstruction still requires validation before synthetic overlay alignment."
+  ]
+}

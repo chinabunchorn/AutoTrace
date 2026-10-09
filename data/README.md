@@ -28,7 +28,7 @@ Small folders are described here and in AGENTS.md instead of separate guides.
 
 Use fictional companies only. Human confirmation does not make data real. No hidden test expected-result JSON in runtime ingestion/provider/assessment. Independent answers belong in `tests/fixtures/`, not here.
 
-Real presentation images/fonts live in `frontend/assets/` after authorized acquisition, retaining original dates/Thailand geography/hashes/attribution. Existing WorldCereal/MODIS context is not validated crop-fire/procurement truth. Native/reference datasets are outside core unless separately authorized.
+Real presentation images/fonts are supplied in `frontend/assets/`, retaining original dates/Thailand geography/hashes/attribution. Read [../docs/assets.md](../docs/assets.md) for the actual inventory and [../THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for reuse terms. Source projection metadata is provided, but exact display-frame alignment still needs validation. Existing WorldCereal/MODIS context remains only inside the historical reference and is not validated crop-fire/procurement truth or a replacement for new synthetic scenarios. Native/reference datasets are outside core unless separately authorized.
 
 Only deliberately prepared shareable fictional inputs belong here. Private proposals, local research, real uploads, credentials and machine-specific notes stay out of Git (`.local/` or authorized external storage). Runtime traces/results go to ignored `outputs/`.
 

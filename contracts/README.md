@@ -76,6 +76,8 @@ ImageryFrame:
 
 Exact country/origin/crop/period lookup; province-only, foreign, unknown/partial/mismatched periods are unsupported/review-needed. Fixture geometry does not prove registration/ownership/real agricultural extent. Display WGS84 metadata does not justify area calculations in degrees. Verify crop/resize and object-fit transforms against unchanged imagery.
 
+Supplied [source projection metadata](../frontend/assets/image-frame-source.json) and [original imagery provenance](../frontend/assets/imagery-provenance.json) support ImageryFrame preparation; they do not yet provide validated rounded crop/display alignment. See [asset guide](../docs/assets.md) for actual supplied inputs and archive-only context overlays. The new origin/scenario records remain separate from these presentation assets.
+
 ## 4. Scenario provider and production
 
 ```text

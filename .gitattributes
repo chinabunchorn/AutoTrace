@@ -1,0 +1,3 @@
+# Preserve imported reference/assets byte-for-byte across platforms.
+/docs/reference/autotrace-v2.html -text
+/frontend/assets/** -text

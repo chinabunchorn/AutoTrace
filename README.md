@@ -44,9 +44,11 @@ The full tree and responsibilities of smaller subfolders are in [AGENTS.md](AGEN
 
 ## Current status
 
-**Structure and development documentation only.** Application implementation still requires explicit approval. There is no implemented server, frontend application, generated demo PDF, executed application test suite or working launch command yet. Empty folders use `.gitkeep`; these are not feature stubs.
+**Structure, development documentation and reusable reference/assets supplied.** Application implementation still requires explicit approval. There is no implemented server, new frontend application, generated demo PDF, executed application test suite or working launch command yet. Empty folders use `.gitkeep`; these are not feature stubs.
 
-Original v2/proposal/research artifacts are not copied into this repository yet. Required assets must be supplied with authorization and provenance before implementation; the shared project must not depend on the owner's private absolute paths. Environment-specific notes and agent state stay in ignored local storage.
+The unchanged [standalone v2](docs/reference/autotrace-v2.html) is included as a historical design reference, not the implemented application. Satellite images, matching fonts/icon, an illustrative photo, provenance, source projection metadata and license notices are included under `frontend/assets/`. See [docs/assets.md](docs/assets.md) for exact paths, reuse boundaries and remaining preparation checks, [asset-manifest.json](frontend/assets/asset-manifest.json) for hashes, and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution. Open the standalone HTML in a browser for design inspection; its fixed-value extraction is not actual PDF extraction.
+
+Private proposals/research archives and unrelated v3 Journey inputs are excluded. Fictional procurement PDFs, supported AOI fixtures and synthetic scenarios still need to be created during approved implementation. Required project inputs use repository-relative paths, not personal workspace dependencies.
 
 ## What this prototype does not prove
 
