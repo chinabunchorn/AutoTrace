@@ -1,6 +1,16 @@
 # Third-Party Asset Notices
 
-These notices apply to the included presentation assets and embedded dependencies of the historical v2 reference, not to an assumed repository-wide software license. AutoTrace's own code has not been assigned an open-source license by this document.
+These notices apply to the included source inputs, presentation assets and embedded dependencies of the historical v2 reference, not an assumed repository-wide software license. AutoTrace's own code has not been assigned an open-source license by this document.
+
+## Revised-source boundary — GISTDA and new AOIs
+
+Frozen user-supplied GISTDA API exports are the active crop inputs; WorldCereal remains historical. AOIs, corrected **5 km²** cap and actual schema/gaps are in [data/origins/README.md](data/origins/README.md). Files: [UC1 message.txt](data/origins/gistda/usecase1/message.txt), [UC2 response.json](data/origins/gistda/usecase2/response.json), [integrity/provenance manifest](data/origins/gistda/manifest.json).
+
+**Attribution: GISTDA; API responses supplied by the project owner.** The user explicitly confirmed permission under GISTDA terms to publish both raw responses on this public GitHub repository. This records the user's permission attestation, not independent legal verification or a blanket GISTDA license; no provider license identifier was supplied. Copernicus/WorldCereal licenses do not apply to these exports. Separate future assets/acquisition require separate permission checks. No credentials detected or API fetching needed.
+
+Both maize records contain update 2026-09-30, but no request endpoint/date-range/coverage/resolution/area/yield metadata. Keep limitations and raw hashes; do not imply surveyed boundaries, real fire evidence or a complete historical observation record. Full UC2 raw data includes non-prototype crop labels; preserve without mixing into maize production. No new Sentinel-2 is supplied yet.
+
+Existing image dates/geography and the old WorldCereal candidate packet are superseded for the selected cases. Preserve their actual provenance, never relabel them as new-AOI GISTDA/imagery evidence. Crop/polygon accuracy and feed/human-food subtype are not verified by a license or official provider name. The broadened factory concept does not change any attribution.
 
 ## Sentinel-2 presentation imagery
 
@@ -38,6 +48,8 @@ No Tailwind JavaScript runtime, package installation or new build setup has been
 
 The photo is from Nebraska, USA. It is not a Thai facility, the fictional company's factory or evidence about the photographed business. Keep this distinction in any reused UI.
 
+The prototype now covers factories using selected maize/corn for feed, human food and other uses. This feed-mill illustration must not restrict scope or imply the identity/type of every fictional factory.
+
 ## Historical context overlays — not scenario inputs
 
 The archived standalone HTML embeds two prior context PNGs. The unchanged imagery provenance manifest retains their descriptions; standalone PNGs are intentionally not imported into runtime assets.
@@ -46,3 +58,5 @@ The archived standalone HTML embeds two prior context PNGs. The unchanged imager
 - **MODIS MCD64A1 February 2021 Burn_Date context:** historical display reprojected raw positive cells into an orange PNG. [Product collection](https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-64A1-061). NASA's [open-data policy](https://www.earthdata.nasa.gov/engage/open-data-services-software-policies) allows unrestricted use of its Earth-science data. This is not a validated crop-specific/QA-filtered burn classification.
 
 Neither overlay supplies the new synthetic scenarios, detects real maize fires, establishes purchases, nor measures real detector accuracy. Preserve context attribution when distributing the archive. See [docs/assets.md](docs/assets.md) for reuse boundaries.
+
+The copied `frontend/assets/usecase2/` candidate is superseded historical context: TCI/SCL/display crops derive from Sentinel-2; classification/map/overlay derive from WorldCereal. Only its historical README is annotated for source retirement; the other 18 local packet files are untouched/excluded from the GISTDA publication. Source-specific credits/permission review remain required before any future packet publication.

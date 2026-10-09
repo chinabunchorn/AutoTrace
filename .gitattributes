@@ -1,3 +1,6 @@
 # Preserve imported reference/assets byte-for-byte across platforms.
 /docs/reference/autotrace-v2.html -text
 /frontend/assets/** -text
+# Preserve the supplied raw crop-response bytes/checksums.
+/data/origins/gistda/usecase1/message.txt -text whitespace=cr-at-eol
+/data/origins/gistda/usecase2/response.json -text

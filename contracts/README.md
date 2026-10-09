@@ -4,6 +4,8 @@
 
 **Output:** agreed versioned payload definitions and validation rules. **Owner:** unassigned; coordinate all interface changes with dependent components. Do not introduce separate schemas in different components. Test oracles never become runtime extraction/assessment inputs.
 
+Revised architecture: **the two supplied GISTDA exports replace WorldCereal and live fetching**; Sentinel-2 remains future preparation. Factories using maize/corn for feed, human food or other uses retain the same workflow. Canonical coordinates, source mappings/schema, corrected **5 km²** cap and honest source gaps are in [data/origins/README.md](../data/origins/README.md). Raw files/manifest are supplied; contracts/local loader remain unimplemented.
+
 ## 1. Document and extraction
 
 Supported readable text-PDF template has ten essential logical fields:
@@ -23,6 +25,8 @@ DocumentFields:
 ```
 
 Add explicit `template_version`, `is_mock=true`, and `origin_role='cultivation'` metadata. Origin is not a decoy supplier/headquarters address. Country, crop, identifier and period validation distinguish syntactically valid values from supported fixture matches.
+
+Keep the ten essential fields. Optional source-backed metadata: `factory_type` (reviewed free text), `crop_use` (`animal_feed` | `human_food` | `other` | `unspecified`) and a reviewed description. These describe the fictional factory/document; they are not remotely verified crop subtypes and do not change the equations. No feed-only restriction. Other crop codes remain unsupported until product/period qualification is approved.
 
 ```text
 ExtractionRecord:
@@ -48,7 +52,8 @@ DocumentReview:
 
 EvidenceReview:
   document_confirmation_id
-  origin_fixture_hash, scenario_hash, area_record_hash, imagery_manifest_hash
+  origin_fixture_hash, query_aoi_hash, crop_evidence_hash
+  scenario_hash, area_record_hash, imagery_manifest_hash
   confirmed_origin, confirmed_period, assumptions
   confirmation_id, snapshot_fingerprint, confirmed_at, human_review_ms
 ```
@@ -63,20 +68,44 @@ Changes increment revisions and revoke affected confirmation/result/export readi
 OriginFixture:
   schema_version, origin_id, origin_country, origin_role='cultivation'
   crop, supported_periods[{start,end}]
-  geometry: {crs, type, coordinates}
-  geometry_is_fictional=true, no_ownership_claim=true
+  query_aoi: {crs:'EPSG:4326', type, coordinates, source:'user_supplied'}
+  crop_evidence_id, crop_evidence_hash
+  cultivation_geometry: {crs, type, coordinates}
+  geometry_source='gistda_crop_product', derivation='clip_to_aoi_then_union'
+  no_ownership_claim=true, is_surveyed_parcel=false
   display_geojson_wgs84, imagery_ids[], image_frame_id
   provenance, version, sha256
 
+CropEvidence:
+  provider='GISTDA', source_origin='user_supplied_api_export'
+  source_path, source_manifest_hash, raw_response_hash
+  case_aoi_association='user_declared', query_aoi_hash
+  selected_crop='maize', source_result='Maize', source_update
+  source_crop_geometry[], source_schema='result/update/geom_array'
+  source_endpoint=null, source_product=null, source_resolution=null
+  source_request_period=null, source_retrieved_at=null, source_crs_declaration=null
+  coordinate_assumption='WGS84_longitude_latitude', assumption_review_id
+  coverage_status: 'unknown' | 'missing' | 'unsupported'
+  geometry_presence: 'present' | 'missing'
+  source_area=null, source_yield=null, source_units=null
+  supported_evidence_window, date_policy, geometry_composition_policy
+  window_is_reviewed_assumption, normalization_method, derived_geometry_hash
+  request_limit: {maximum:5, unit:'km2', method:null, source:'user_correction'}
+  publication_permission='user_confirmed_specific_files', limitations[]
+
 ImageryFrame:
-  requested_bbox_wgs84, crop_crs, crop_bounds, crop_affine
+  query_aoi_hash, requested_bbox_wgs84, crop_crs, crop_bounds, crop_affine
   crop_shape, display_shape, reconstruction_method
   images[{file,item_id,acquired_at,source_url,sha256,kind:'real_rgb'}]
 ```
 
-Exact country/origin/crop/period lookup; province-only, foreign, unknown/partial/mismatched periods are unsupported/review-needed. Fixture geometry does not prove registration/ownership/real agricultural extent. Display WGS84 metadata does not justify area calculations in degrees. Verify crop/resize and object-fit transforms against unchanged imagery.
+Exact country/origin/crop/period lookup; province-only, foreign, unknown/partial/mismatched periods are unsupported/review-needed. User query polygons delimit requests, not cultivated area. GISTDA product polygons do not prove surveyed registration/ownership, factory procurement or feed/food subtype. Clip/union matching crop geometry in EPSG:32647; retain source/derived shapes separately. Preserve date slices/season semantics rather than summing repeated biweekly polygons as additional acreage/production. Display coordinates do not justify area in degrees. Verify new per-case crop/resize/object-fit transforms.
 
-Supplied [source projection metadata](../frontend/assets/image-frame-source.json) and [original imagery provenance](../frontend/assets/imagery-provenance.json) support ImageryFrame preparation; they do not yet provide validated rounded crop/display alignment. See [asset guide](../docs/assets.md) for actual supplied inputs and archive-only context overlays. The new origin/scenario records remain separate from these presentation assets.
+Old [frame metadata](../frontend/assets/image-frame-source.json), [imagery provenance](../frontend/assets/imagery-provenance.json) and WorldCereal candidate cover superseded locations. See [asset guide](../docs/assets.md). GISTDA exports are now supplied; only new Sentinel-2 frames/derived records are pending. Preserve raw source bytes and unknown metadata. Improved accuracy is a user premise, not a contract guarantee.
+
+Raw files: [UC1 message.txt](../data/origins/gistda/usecase1/message.txt), [UC2 response.json](../data/origins/gistda/usecase2/response.json), [manifest](../data/origins/gistda/manifest.json). They are JSON arrays of `result`, `update`, `geom[]`; geometry objects are Polygon/MultiPolygon, not FeatureCollections. Select Maize by exact label; UC2 also contains Cassava/Sugarcane. Missing/duplicate maize, file/hash/schema errors and unsupported windows fail closed. Replacing raw bytes/manifest or supported assumptions revokes affected confirmation/result/export fingerprints.
+
+The corrected cap is 5 km², user-reported; original request/area-method/endpoint metadata is absent. Both maize updates are 2026-09-30; do not map that directly to requested period, observation/harvest/burn dates or complete coverage. Preserve missing source fields as unknown/null and record reviewed scenario/window/composition assumptions separately. Do not invent area/yield/50 m resolution from API examples. Geometry presence is not complete crop coverage. No live authentication/fetching/refresh API, key/account prerequisite or WorldCereal fallback.
 
 ## 4. Scenario provider and production
 
@@ -93,7 +122,8 @@ ScenarioEvidence:
 
 AreaProductionRecord:
   record_id, origin_id, crop, period, is_mock=true
-  cultivation_geometry, geometry_is_fictional=true
+  cultivation_geometry, crop_evidence_hash, geometry_source='gistda_crop_product'
+  query_aoi_hash, derivation_method, geometry_is_synthetic=false
   area_method='projected_UTM', crs
   yield_t_per_ha, yield_basis='uniform_mock'
   synthetic_harvest_date, timing_is_synthetic=true
@@ -105,9 +135,11 @@ GeometryResult:
   method, crs, tolerance, rounding_policy
 ```
 
-Complete synthetic coverage with empty burn features is intentional zero. Missing coverage cannot mean clean. Provider returns evidence, not Q/b/verdict/report text. Geometry computes unions/intersections; production derives Q and b only with explicit yield/timing policy. Real provider substitution requires qualified provenance/coverage/matching, not merely compatible JSON.
+Complete synthetic **burn** coverage with empty burn features is intentional scenario zero. GISTDA crop no-data is not zero cultivation/no-burn, and available crop coverage is not complete burn coverage. User UC1/UC2 labels do not certify fire status. The burn provider remains separate, returning evidence rather than Q/b/verdict prose. Geometry uses reviewed GISTDA crop union and separately labelled burn features; production derives Q/b only with explicit mock yield/timing assumptions. Source yield is retained separately; using it requires reviewed units/aggregation/date semantics, not merely a documentation example.
 
 Under uniform mock yield: Q = cultivated hectares × yield; b = burn-associated intersection hectares / cultivated hectares. Empty cultivation cannot produce b. Invalid polygons fail rather than silently repairing unknown geometry. Residue burning after harvest can classify origin under an explicit policy but does not prove grain destroyed.
+
+Independent synthetic 100-ha geometry/math fixtures remain test inputs only. Final integrated hectares/Q/b/R and report oracles are set from matched source evidence and explicit mock inputs after date qualification; no preassigned historical toy result.
 
 ## 5. Assessment snapshot and result
 
@@ -116,7 +148,8 @@ AssessmentSnapshot:
   schema_version, source_document_sha256, review_revision
   confirmed_document_values
   document_confirmation_id, evidence_confirmation_id
-  origin_fixture_hash, imagery_manifest_hash, scenario_hash, area_record_hash
+  origin_fixture_hash, query_aoi_hash, crop_evidence_hash
+  imagery_manifest_hash, scenario_hash, area_record_hash
   geometry_result, Q_t, b, R_t
   calculation_version, reporting_version
   assumptions:
@@ -162,6 +195,8 @@ EvaluationRecord:
 ```
 
 Trace bundles retain source PDF hash/text, original/extracted/corrected data, confirmations, origin/period, fixture/provider/image hashes, assumptions, computation and report. Replay freezes these inputs/versions; report body/numeric/status results repeat except declared timestamps/run metadata. Changed versions/hashes cannot silently substitute new evidence.
+
+Include GISTDA query/source/derived geometry hashes, source crop/period/resolution/units/coverage/reuse metadata and Sentinel-2 per-case frame hashes. Render user boundaries, crop evidence, synthetic burn and mock production distinctly. Factory type/end use remains document context. No live API during replay/pitch; if source permission prevents reproducible caching, mark readiness blocked.
 
 No live-LLM label on template reports; no probability, misconduct/compliance verdict or destroyed-grain claim. Separate before/after-correction correctness and auto/human timing. Core tests do not measure C.
 

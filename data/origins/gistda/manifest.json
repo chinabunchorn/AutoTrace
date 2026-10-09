@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen user-supplied GISTDA response inputs for the controlled prototype; no live API fetching or API credentials required",
+  "source_attribution": "GISTDA; API responses supplied by the project owner",
+  "source_origin": "user_supplied_api_export",
+  "source_authenticity": "reported_by_user_not_independently_authenticated",
+  "publication_permission": {
+    "status": "confirmed_by_user",
+    "scope": "Both raw response files on the public AutoTrace GitHub repository",
+    "provider_license_identifier": null,
+    "note": "The user confirmed permission under GISTDA terms to publish these responses. This records that attestation, not an independently verified blanket data license. Other assets/acquisitions require separate permission."
+  },
+  "request_area_limit": {
+    "maximum": 5,
+    "unit": "km2",
+    "source": "user_correction",
+    "provider_area_method": null,
+    "note": "The user corrected the previous unit error. Supplied query polygon planning areas are below 5 km2; API area method is not embedded in these responses. No new API requests are planned."
+  },
+  "prototype_crop": {
+    "code": "maize",
+    "source_result": "Maize",
+    "selection_rule": "Select the record by exact result label within its associated case response, never by filename, first element, or a combined union of all crop records"
+  },
+  "files": [
+    {
+      "case_id": "UC1",
+      "origin_id": "TH-DEMO-AOI-01",
+      "path": "data/origins/gistda/usecase1/message.txt",
+      "original_filename": "message.txt",
+      "format": "JSON array in a .txt file; not GeoJSON FeatureCollection",
+      "bytes": 156646,
+      "sha256": "c1edd717d66878e85482ead34b775ddf5f9151d194ea43d6e4fcfd3dc43d069f",
+      "aoi_association": "user_declared_usecase1; spatial_intersection_checked; request_geom_not_embedded",
+      "records": [
+        {
+          "index": 0,
+          "result": "Maize",
+          "update": "2026-09-30",
+          "geometry_objects": 4,
+          "geometry_types": ["MultiPolygon"],
+          "polygon_components_before_union": 65,
+          "selected_for_prototype": true
+        }
+      ]
+    },
+    {
+      "case_id": "UC2",
+      "origin_id": "TH-DEMO-AOI-02",
+      "path": "data/origins/gistda/usecase2/response.json",
+      "original_filename": "response.json",
+      "format": "JSON array; not GeoJSON FeatureCollection",
+      "bytes": 53411,
+      "sha256": "510b82b3ffc47b21c3084891f847b016e64a79f5d9b3da72d397c2ceddbeae9c",
+      "aoi_association": "user_declared_usecase2; spatial_intersection_checked; request_geom_not_embedded",
+      "records": [
+        {
+          "index": 0,
+          "result": "Cassava",
+          "update": "2026-01-15",
+          "geometry_objects": 1,
+          "geometry_types": ["MultiPolygon"],
+          "polygon_components_before_union": 2,
+          "selected_for_prototype": false
+        },
+        {
+          "index": 1,
+          "result": "Maize",
+          "update": "2026-09-30",
+          "geometry_objects": 8,
+          "geometry_types": ["MultiPolygon", "Polygon"],
+          "polygon_components_before_union": 125,
+          "selected_for_prototype": true
+        },
+        {
+          "index": 2,
+          "result": "Sugarcane",
+          "update": "2026-09-30",
+          "geometry_objects": 6,
+          "geometry_types": ["MultiPolygon", "Polygon"],
+          "polygon_components_before_union": 23,
+          "selected_for_prototype": false
+        }
+      ]
+    }
+  ],
+  "schema_observed": {
+    "top_level": "array",
+    "record_fields": ["result", "update", "geom"],
+    "geom": "array of GeoJSON Polygon/MultiPolygon geometry objects, each with type and coordinates",
+    "embedded_crs": null,
+    "coordinate_interpretation": "longitude, latitude in WGS84/EPSG:4326 assumed for the supplied GeoJSON geometry; review during implementation",
+    "embedded_area": false,
+    "embedded_yield": false
+  },
+  "missing_source_metadata": [
+    "exact queried endpoint/product/version/resolution",
+    "request geom/from/to and request or retrieval timestamp",
+    "meaning of update and per-geometry observation or season dates",
+    "complete coverage/no-data assertion",
+    "source area/yield values and units",
+    "provider CRS declaration and request-area measurement method"
+  ],
+  "processing_requirements": [
+    "Preserve raw files byte-for-byte; write derived geometry separately with source hashes",
+    "Validate actual response schema and geometry before selecting exact Maize record",
+    "Clip matched crop geometries to the associated canonical query AOI and union/deduplicate in EPSG:32647",
+    "Some supplied geometry crosses query AOI edges; do not assume it is already clipped",
+    "Polygon component counts are structural counts, not surveyed farm counts",
+    "Do not infer contemporaneous acreage/production by summing geometries or updates; explicitly review snapshot/date-composition semantics",
+    "update=2026-09-30 is source metadata, not a procurement period, acquisition time, harvest date, or burn date",
+    "Absent source fields remain unknown; no fabricated endpoint, area, yield or complete-coverage metadata",
+    "UC1/UC2 burnt/non-burnt names do not establish fire status; burn evidence and mock production remain separate",
+    "No live GISTDA fetching, API key, refresh, or WorldCereal fallback in the prototype"
+  ]
+}
