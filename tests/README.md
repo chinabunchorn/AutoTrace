@@ -1,5 +1,7 @@
 # Tests and Acceptance
 
+**Current reduced demo:** `test_demo_api.py` verifies the four-GET FastAPI app, UC1 data, UC2 null template, image serving, invalid/missing data, real loopback launch and in-process external socket/DNS denial. Run `python -m unittest discover -s tests -p 'test_*.py' -v` in the prepared environment. 13 tests passed on 2026-10-10; logs are under `outputs/backend-demo/`. The larger acceptance matrix below remains future scope and is not passed by this suite.
+
 ## Responsibility
 
 Verify actual software behavior and controlled scenario processing, not real agricultural/fire accuracy. Read [../plan.md](../plan.md) and [../contracts/README.md](../contracts/README.md).

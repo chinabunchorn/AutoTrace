@@ -1,6 +1,6 @@
 # Shared Development Contracts
 
-**Read-only demo contract:** see [draft four-GET JSON design](../docs/design-backend-api.md). It records the user-agreed prepared-data scope and proposed FastAPI stack. The full-workflow records below remain a reference; they are not implemented APIs or requirements to add runtime review/confirmation to this simplified demo.
+**Implemented read-only demo contract:** see [approved four-GET JSON design](../docs/design-backend-api.md) and [backend guide](../backend/README.md). Prepared records live in `data/demo/`; UC2 document/calculation sections remain an editable null template. The full-workflow records below remain a reference; they are not requirements to add runtime review/confirmation to this simplified demo.
 
 **Purpose:** frontend/backend/data/test contributors use one set of records and states. These are proposed contracts to freeze before implementation, not implemented APIs or generated JSON schemas.
 

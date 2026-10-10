@@ -1,5 +1,7 @@
 # AutoTrace
 
+**Current hackathon demo:** the [read-only FastAPI backend](backend/README.md) now serves four GET endpoints with prepared data. UC1 document/calculation values and both image pairs are available; UC2 document/calculation fields are an editable null template in `data/demo/UC2.json`. Launch from the repository root with `.venv/Scripts/python.exe -m backend` after the documented dependency setup. The larger product workflow below remains future scope.
+
 AutoTrace is a use-case-driven prototype for the **Beyond Green: Greenwashing Innovation Challenge**. It demonstrates a document-to-assessment workflow with automation and human review, not a production monitoring platform or validated fire detector.
 
 The concept covers factories consuming selected maize/corn for animal feed, human food and other uses. End use comes from reviewed documents, not remotely inferred subtypes. **The two supplied GISTDA API response exports replace WorldCereal and live crop fetching.**
@@ -46,7 +48,7 @@ The full tree and responsibilities of smaller subfolders are in [AGENTS.md](AGEN
 
 ## Current status
 
-**Structure, development documentation and reusable reference/assets supplied.** Application implementation still requires explicit approval. There is no implemented server, new frontend application, generated demo PDF, executed application test suite or working launch command yet. Empty folders use `.gitkeep`; these are not feature stubs.
+**Read-only backend implemented under the user's 2026-10-10 authorization.** Its 13 backend tests pass; see [backend setup/results](backend/README.md). No new frontend application or generated demo PDF is implemented. The earlier full extraction/review/GIS/report workflow is not complete. Remaining empty folders use `.gitkeep`; these are not feature stubs.
 
 The unchanged [standalone v2](docs/reference/autotrace-v2.html) is included as a historical design reference, not the implemented application. Satellite images, matching fonts/icon, an illustrative photo, provenance, source projection metadata and license notices are included under `frontend/assets/`. See [docs/assets.md](docs/assets.md) for exact paths, reuse boundaries and remaining preparation checks, [asset-manifest.json](frontend/assets/asset-manifest.json) for hashes, and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution. Open the standalone HTML in a browser for design inspection; its fixed-value extraction is not actual PDF extraction.
 

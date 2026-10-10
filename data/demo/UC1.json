@@ -1,0 +1,21 @@
+{
+  "document": {
+    "case_id": "UC1",
+    "fictional_company": "Factory A",
+    "crop": "maize",
+    "total_purchase_quantity": 5000,
+    "purchase_from": "Area-1",
+    "area_purchase_percentage": 20,
+    "area_purchase_quantity_t": 1000
+  },
+  "imagery": {
+    "before_url": "/assets/selected-aois/UC1/UC1_before.jpg",
+    "after_url": "/assets/selected-aois/UC1/UC1_after.png"
+  },
+  "calculation": {
+    "case_id": "UC1",
+    "total_yield_t": 1513.61,
+    "burn_linked_percentage": 82.47,
+    "non_burn_yield_t": 265.37
+  }
+}

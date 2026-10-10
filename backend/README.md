@@ -1,6 +1,47 @@
 # Backend Development
 
-**Current demo design:** the user agreed to a simplified read-only four-GET demo and proposed FastAPI. See [draft API design](../docs/design-backend-api.md) for JSON responses and the scope change. The full-workflow guide below remains a reference; its runtime extraction/confirmation requirements are outside the simplified demo. Response shapes await review; no implementation or installation has occurred.
+The read-only FastAPI app is implemented in `app.py`, following the [approved API design](../docs/design-backend-api.md). It serves four GET endpoints and prepared case values; no calculation or extraction runs during requests.
+
+## Setup and launch
+
+From the repository root, use Python 3.12 (tested with 3.12.14):
+
+```powershell
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r backend/requirements.txt
+.venv/Scripts/python.exe -m backend
+```
+
+The last command starts Uvicorn at `http://127.0.0.1:8765`. Stop it with Ctrl+C. Dependencies are pinned in `requirements.txt`, including HTTPX for tests. Install once during setup; the prepared app requires no external network. On macOS/Linux use `.venv/bin/python` in place of `.venv/Scripts/python.exe` (not yet tested on those platforms).
+
+| Endpoint | Result |
+|---|---|
+| `GET /health` | Process status |
+| `GET /extract-doc?case_id=UC1` | Prepared fictional-company fields |
+| `GET /sentinel-pic?case_id=UC1` | `before_url` and `after_url` |
+| `GET /calculations?case_id=UC1` | Stored Q, burn-linked percentage and C |
+
+Case routes require exactly `UC1` or `UC2`; missing/invalid IDs return 422. Original selected-case images are served under `/assets/selected-aois/`; other repository folders are not exposed. Swagger UI is available at `http://127.0.0.1:8765/docs`, with its schema at `/openapi.json`. These documentation routes are additional to the four demo endpoints. Swagger uses FastAPI's default CDN-hosted UI assets; the demo endpoints and local images work offline independently of the developer documentation. The frontend can assign the returned same-origin image URLs to `<img>.src`.
+
+## Filling UC2
+
+Edit [data/demo/UC2.json](../data/demo/UC2.json), replacing null document and calculation values with actual prepared values. Sections are read anew on every request, so no restart is needed. Until completed, those endpoints return 503 `case_not_ready`. UC2 images already work. Malformed JSON, incorrect case IDs, out-of-range percentages, negative/nonfinite/non-number values or unsafe image paths return 500 `invalid_prepared_data`.
+
+UC1 contains the approved fictional document example and Q=1513.61 t, burn-linked percentage=82.47, C=265.37 t. [Prepared-data notes](../data/demo/README.md) record units, assumptions, rounding and the 2021-mask/2026-crop temporal mismatch. These values do not measure destroyed grain or prove a procurement/compliance claim. Selected image source metadata and UC2 values remain to be filled by the user.
+
+## Verification
+
+```powershell
+.venv/Scripts/python.exe -m unittest discover -s tests -p 'test_*.py' -v
+```
+
+13 tests passed on Windows/Python 3.12.14: exact UC1 replies, editable UC2 template, missing/corrupt/invalid data, original image bytes, path containment, four-route/read-only behavior, a real Uvicorn launch and prepared routes with process-level external socket/DNS denial (including negative controls). Logs are retained locally under `outputs/backend-demo/`. The real-server test starts and stops its own loopback server on a free port. HTTPX currently emits an upstream Starlette deprecation warning; tests pass with the pinned versions.
+
+No frontend UI integration/browser rehearsal, UC2 completed calculations, historical environmental validation or full-workflow gates are claimed.
+
+## Earlier full-workflow reference
+
+The guide below describes the earlier larger scope, not the implemented four-GET demo. Its module/gate expectations remain future reference.
 
 ## Responsibility
 

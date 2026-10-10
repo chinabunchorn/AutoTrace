@@ -1,6 +1,6 @@
 # AutoTrace — Phased Implementation Plan
 
-**Scope update, 2026-10-09:** the user agreed to a prepared read-only demo with four GET endpoints and proposed FastAPI. The [draft backend API design](docs/design-backend-api.md) defines the proposed response contract. The full-workflow phases/stack below are retained as the earlier plan; they are not passed or required for this reduced demo. No implementation/dependency installation is authorized by this design draft.
+**Scope update, 2026-10-10:** the user approved the [four-GET FastAPI design](docs/design-backend-api.md) and explicitly requested implementation using prepared UC1 values and a blank UC2 template. The [backend app/setup](backend/README.md) and `data/demo/` records are implemented; 13 backend tests pass. The full-workflow phases/stack below are retained as the earlier plan; they are not passed or required for this reduced demo. This implementation does not claim frontend integration, completed UC2 values or the original larger gates.
 
 **Status:** project structure, documentation and publication of reusable reference/assets approved; application implementation awaits explicit user approval.
 

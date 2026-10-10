@@ -1,0 +1,21 @@
+{
+  "document": {
+    "case_id": "UC2",
+    "fictional_company": "Factory B",
+    "crop": "maize",
+    "total_purchase_quantity": 5000,
+    "purchase_from": "Area-2",
+    "area_purchase_percentage": 20,
+    "area_purchase_quantity_t": 1000
+  },
+  "imagery": {
+    "before_url": "/assets/selected-aois/UC2/UC2_before.jpg",
+    "after_url": "/assets/selected-aois/UC2/UC2_after.jpg"
+  },
+  "calculation": {
+    "case_id": "UC2",
+    "total_yield_t": 1109.91,
+    "burn_linked_percentage": 0,
+    "non_burn_yield_t": 1109.91
+  }
+}

@@ -1,6 +1,6 @@
 # Read-only demo backend API
 
-**Status:** Approved, version 1; user accepted the design in chat on 2026-10-10 ("design-backend-api.md is done"). This accepts the design, not dependency installation or application implementation.
+**Status:** Approved, version 1; user accepted the design in chat on 2026-10-10 ("design-backend-api.md is done"). The user subsequently authorized the FastAPI implementation with prepared UC1 values and an empty UC2 data template. The backend is implemented; see [setup and verification](../backend/README.md).
 **Inspected:** 2026-10-10.
 
 ## Decisions and scope
@@ -9,14 +9,14 @@ The user agreed to four GET endpoints serving prepared UC1/UC2 data, then propos
 
 This is the simplified hackathon scope agreed in chat. It replaces the earlier runtime upload, extraction, corrections, confirmation, GIS processing and replay workflow for this demo. Preparation can compute/extract values beforehand; GET requests only read prepared records. The route name `extract-doc` is retained for frontend convenience, but its response explicitly identifies prepared data. No runtime database, external API, login or editable calculation inputs are required.
 
-The earlier full-workflow plan/contracts remain a reference for future work. Their implementation gates are not completed by this demo. This document proposes the replacement JSON contract; no application implementation, package installation, commit or push is authorized by drafting it.
+The earlier full-workflow plan/contracts remain a reference for future work. Their implementation gates are not completed by this demo. Implementation uses the replacement contract below. No new commit/push/deployment was requested as part of this implementation.
 
 ## Requirements
 
 | ID | Requirement and acceptance check |
 |---|---|
 | R1 | Exactly four application JSON GET routes as listed below. Case routes require `case_id`, exactly `UC1` or `UC2`; no implicit default. |
-| R2 | Prepared document fields and calculations retain mock/synthetic labels and source/assumption information. Replies do not claim live extraction or calculation. |
+| R2 | Prepared document fields and calculations retain source/assumption and mock/candidate-mask labels in accompanying data documentation. Replies do not claim live extraction or calculation. |
 | R3 | Image URLs resolve to the correct case's original files. The image response contains URLs only; provenance remains in accompanying asset documentation. |
 | R4 | Prepared calculation values pass independent formula/unit checks before serving. Missing mandatory inputs or contradictory results produce an error rather than a successful incomplete result. |
 | R5 | Both cases work from prepared repository files with external network blocked. Only approved public assets/documents are served. |
@@ -25,10 +25,10 @@ The earlier full-workflow plan/contracts remain a reference for future work. The
 
 - UTF-8 JSON; snake_case fields; direct objects without a `data` wrapper.
 - Document/calculation replies include `case_id`; the image reply contains only `before_url` and `after_url`. All prepared files for a case must agree on its ID and origin.
-- Quantities/areas/ratios are finite JSON numbers. Units appear in field names or explicit quantity objects. Ratios use 0–1; frontend multiplies by 100 to display percent. Display rounding does not change stored values.
+- Quantities are finite JSON numbers in tonnes. `area_purchase_percentage` and `burn_linked_percentage` use 0–100; frontend adds `%` without multiplying by 100. Display rounding does not change stored values.
 - Dates use `YYYY-MM-DD`. Unknown metadata uses null. A null is never interpreted as zero.
 - URLs are same-origin paths, not machine filesystem paths or base64 image data.
-- Prepared case records proposed under `data/demo/UC1.json` and `data/demo/UC2.json` contain `document`, `imagery`, and `calculation` sections corresponding to the three case responses. These files do not exist yet. Original PDFs stay under `data/documents/`; images stay under `frontend/assets/selected-aois/`.
+- Prepared case records at `data/demo/UC1.json` and `data/demo/UC2.json` contain `document`, `imagery`, and `calculation` sections corresponding to the three case responses. UC2 document/calculation values are null until filled; those endpoints return 503 meanwhile. Images stay under `frontend/assets/selected-aois/`. Records are read each request; no restart is needed after editing.
 - Frontend selects a case, loads document/images/calculations, then displays the prepared walkthrough. Switching cases reloads all three replies; results belong to the selected case. There is no editable input or server confirmation state in this scope.
 
 ## GET /health
@@ -45,7 +45,7 @@ HTTP 200 means the process is responding, not that every case artifact is ready.
 
 ## GET /extract-doc?case_id=UC1
 
-Returns prepared document fields plus a source link. The layout below is an authoring example, not an HTTP 200 response ready to serve: null document values must be filled from the actual mock document first. No case PDF is currently supplied.
+Returns the prepared fictional-company values below. Both purchase quantities are in tonnes; `area_purchase_quantity_t` is declared-origin purchases R. No actual extraction runs and no case PDF has been generated.
 
 ```json
 {
@@ -93,7 +93,7 @@ Assign each URL string to `src`, rather than the entire JSON response. If the fr
 
 ## GET /calculations?case_id=UC1
 
-Returns prepared values and Thai narrative together. The following is an authoring layout; null numerical inputs/results and report must be supplied/validated before HTTP 200. Historical 100-ha/500-t examples are not UC1/UC2 results.
+Returns the agreed prepared UC1 Q, burn-linked percentage and C below. No computation runs during a request. The response has no additional assessment status or Thai report field. UC2 has the same keys with null data values in its editable record, so requests return 503 until those values are filled.
 
 ```json
 {
@@ -104,9 +104,9 @@ Returns prepared values and Thai narrative together. The following is an authori
 }
 ```
 
-Successful supported status values: `conditional_deficit`, `no_deficit_demonstrated`, `no_purchases`. Validate `Q = cultivation_area_ha × yield_t_per_ha`, `b = burn_linked_area_ha / cultivation_area_ha`, `C = Q × (1 − b)`, `B_min = max(0, R − C)` and `s_min = B_min / R`. When R=0, status is `no_purchases` and share is null. Carry-in/replacement must be explicitly reviewed zero for this closed-origin model; unknown/nonzero values or R>Q cannot be served as confident supported results.
+Preparation checks Q = cultivation_area_ha × yield_t_per_ha, b = burn_linked_area_ha / cultivation_area_ha and C = Q × (1 − b), retaining the effect of rounding. Here maize area=216.23 ha, candidate scar overlap=178.32 ha and assumed yield=7 t/ha. The endpoint returns stored values, without computing B_min/s_min or a sourcing verdict. Independent tests check the agreed numbers; request-time validation checks types/ranges and C <= Q.
 
-R denotes declared-origin/period purchases. Area comes from qualified clipped/unioned GISTDA maize geometry, not the whole query boundary. Uniform yield and burn/stock/timing remain mock/synthetic. Period/date qualification and actual prepared case values are pending. Label limitations in Thai, including that the result is conditional and does not prove misconduct, compliance or grain destruction. The report must agree with the stored numerical result. Burn-positive does not itself require a deficit.
+R denotes declared-origin purchases, not total company purchases. UC1 maize geometry was clipped to the query polygon with overlap duplicates excluded. The supplied candidate burn mask is from January–March 2021 and maize polygons are updated September 2026. This temporal mismatch and assumed 7 t/ha yield make these conditional spatial-overlap estimates, not measured production or destroyed grain. The mask is a heuristic candidate, not a synthetic layer or validated perimeter. [Prepared-data notes](../data/demo/README.md) retain those limitations and the fictional purchase basis.
 
 ## Errors
 
@@ -126,6 +126,6 @@ Use a consistent FastAPI `detail` object. Missing/invalid case query: HTTP 422 (
 
 ## Proposed validation and remaining inputs
 
-Check both cases through real GET requests; compare each reply to its prepared record, request every returned local file URL, exercise invalid/missing case queries and absent/corrupt records, and independently verify equations/units and R=0. Confirm original image hashes remain unchanged and repeat the walkthrough offline. These are proposed checks; no API/tests exist or have passed yet.
+13 backend tests passed: exact UC1 replies and independent arithmetic, both image pairs byte-for-byte, invalid/missing cases, corrupt/invalid/absent records, UC2 missing-data handling and template edits, path containment, four application routes, a real Uvicorn launch and prepared requests with external socket/DNS denial. Actual logs are retained under `outputs/backend-demo/`. These do not pass the earlier full-workflow gates or environmental validation.
 
-Remaining inputs: source PDFs/prepared fields, image acquisition/provenance metadata, reviewed periods and mock assumptions, qualified cultivation/burn areas, numerical results and Thai report wording. JSON shapes are ready for review; actual case content is not invented by this design.
+Remaining inputs: UC2 prepared document/calculation values and selected-image acquisition/provenance metadata. No frontend/browser walkthrough or full historical crop/fire validation is implemented here.
