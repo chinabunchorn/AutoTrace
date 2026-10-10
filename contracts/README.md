@@ -1,5 +1,7 @@
 # Shared Development Contracts
 
+**Read-only demo contract:** see [draft four-GET JSON design](../docs/design-backend-api.md). It records the user-agreed prepared-data scope and proposed FastAPI stack. The full-workflow records below remain a reference; they are not implemented APIs or requirements to add runtime review/confirmation to this simplified demo.
+
 **Purpose:** frontend/backend/data/test contributors use one set of records and states. These are proposed contracts to freeze before implementation, not implemented APIs or generated JSON schemas.
 
 **Output:** agreed versioned payload definitions and validation rules. **Owner:** unassigned; coordinate all interface changes with dependent components. Do not introduce separate schemas in different components. Test oracles never become runtime extraction/assessment inputs.

@@ -1,5 +1,7 @@
 # Backend Development
 
+**Current demo design:** the user agreed to a simplified read-only four-GET demo and proposed FastAPI. See [draft API design](../docs/design-backend-api.md) for JSON responses and the scope change. The full-workflow guide below remains a reference; its runtime extraction/confirmation requirements are outside the simplified demo. Response shapes await review; no implementation or installation has occurred.
+
 ## Responsibility
 
 One minimal Python helper integrates actual document extraction, supported geography/scenario processing and deterministic assessment. This is not a microservice architecture. Read root [AGENTS.md](../AGENTS.md), [plan.md](../plan.md) W1/W2/W3/W5 and [contracts/README.md](../contracts/README.md).

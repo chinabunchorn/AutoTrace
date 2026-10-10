@@ -1,5 +1,7 @@
 # AutoTrace — Phased Implementation Plan
 
+**Scope update, 2026-10-09:** the user agreed to a prepared read-only demo with four GET endpoints and proposed FastAPI. The [draft backend API design](docs/design-backend-api.md) defines the proposed response contract. The full-workflow phases/stack below are retained as the earlier plan; they are not passed or required for this reduced demo. No implementation/dependency installation is authorized by this design draft.
+
 **Status:** project structure, documentation and publication of reusable reference/assets approved; application implementation awaits explicit user approval.
 
 **Purpose:** define assignable coding work, shared interfaces, expected outputs and verification. Owners are unassigned until people agree on them. Folder creation does not complete a feature. Read [AGENTS.md](AGENTS.md) and [contracts/README.md](contracts/README.md) first.
