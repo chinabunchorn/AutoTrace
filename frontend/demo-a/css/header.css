@@ -1,0 +1,71 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--brand);
+}
+
+.topbar-inner {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 4px 0;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-size: 15px;
+}
+
+.steps li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 3px solid transparent;
+}
+
+.step-box {
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background-color .3s ease;
+}
+
+/* on phones only the current step keeps its label */
+@media (max-width: 760px) {
+  .steps .lab {
+    display: none;
+  }
+
+  .steps li[data-cur="true"] .lab {
+    display: inline;
+  }
+}

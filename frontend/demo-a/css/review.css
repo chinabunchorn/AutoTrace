@@ -1,0 +1,412 @@
+.review-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.review-main {
+  flex: 1;
+  padding-top: 36px;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 32px;
+}
+
+.page-sub {
+  margin: 0;
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.match-count {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+}
+
+.meter {
+  display: flex;
+  gap: 4px;
+}
+
+.meter-seg {
+  width: 26px;
+  height: 8px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  transition: background-color .3s ease;
+}
+
+.warn-text {
+  color: var(--burn-ink);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.panel-meta {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- left: document next to the fields it was read into ---------- */
+
+.doc-check {
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.page-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 220px;
+}
+
+.mini-page-frame {
+  padding: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+/* tiny A4 page, the boxes show where each value was read from */
+.mini-page {
+  aspect-ratio: 210 / 297;
+  padding: 12px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.mini-page .ln {
+  height: 5px;
+  background: #E3E5DF;
+}
+
+.mark-box {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 2px 5px;
+  border: 2px solid var(--ink);
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 700;
+  transition: background-color .3s ease;
+}
+
+.mark-box span {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  font-size: 9px;
+}
+
+.page-count {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.field-no {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background-color .3s ease;
+}
+
+.input {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 2px solid var(--ink);
+  background: #fff;
+  font-size: 17px;
+}
+
+/* the box bleeds out a bit so the dashed outline doesn't touch the text */
+.field-check {
+  gap: 8px;
+  padding: 14px;
+  margin: 0 -14px;
+  outline-offset: -2px;
+  transition: background-color .3s ease;
+}
+
+.share-inputs {
+  display: grid;
+  grid-template-columns: 64px auto minmax(0, 104px) auto;
+  justify-content: start;
+  gap: 8px;
+  align-items: center;
+}
+
+.pending-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pending-note .warn-text {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ghost.small {
+  min-height: 40px;
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ---------- right: map ---------- */
+
+.map {
+  position: relative;
+  aspect-ratio: 1830 / 960;
+  overflow: hidden;
+  background: #cfd3ca;
+}
+
+.map img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -7px;
+  background: #fff;
+  border: 2px solid var(--ink);
+}
+
+.map-tag {
+  position: absolute;
+  padding: 6px 10px;
+  background: var(--brand);
+  color: #fff;
+  line-height: 1.3;
+}
+
+.map-tag-name {
+  font-weight: 700;
+}
+
+.map-tag-size {
+  font-size: 13px;
+}
+
+.map-tools {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.tool {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 0;
+  background: #fff;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.tool + .tool {
+  border-left: 1px solid var(--line);
+}
+
+.tool.active {
+  background: var(--bg);
+  font-weight: 600;
+}
+
+.tool:hover {
+  background: var(--bg);
+}
+
+.map-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.map-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.coords {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.coord-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* same height as the inputs so the three columns line up */
+.area-size {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 46px;
+  white-space: nowrap;
+}
+
+.area-size .unit {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.area-size .km {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.match-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-choice-title {
+  font-weight: 700;
+}
+
+.choice-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.choice {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 2px solid var(--brand);
+  font-weight: 600;
+  text-align: left;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.choice + .choice {
+  border-left: 0;
+}
+
+/* ---------- back / next ---------- */
+
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.review-actions-next {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: flex-end;
+}

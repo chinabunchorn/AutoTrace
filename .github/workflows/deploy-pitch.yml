@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'frontend/pitch/**'
+      - 'frontend/demo-a/**'
       - 'frontend/assets/fonts.css'
       - 'frontend/assets/font-*.woff2'
       - 'frontend/assets/favicon.svg'

@@ -33,6 +33,16 @@ The standalone reference embeds DM Sans and IBM Plex Sans Thai. The matching 14 
 
 Fonts are imported without modification. Retain the OFL notices when redistributing the standalone HTML or extracted font assets. No font version beyond the verified binary hashes is asserted.
 
+## Design A demo (`frontend/demo-a/`)
+
+Self-contained click-through demo published at `demo-a/` next to the pitch. It is an illustrated prototype, not a live assessment; its numbers are the demo values shown in the page.
+
+- **Sarabun** font — Copyright 2018 The Sarabun Project Authors. SIL Open Font License 1.1. Full notice: [Sarabun-OFL.txt](frontend/demo-a/fonts/Sarabun-OFL.txt). Font files are unmodified.
+- **React 18.3.1** (`react.production.min.js`, `react-dom.production.min.js`) — Copyright (c) Facebook, Inc. and its affiliates. MIT License. Full notice: [React-MIT.txt](frontend/demo-a/vendor/React-MIT.txt).
+- `images/area2-before.jpg` and `images/area2-after.jpg` are byte-identical copies of `frontend/assets/selected-aois/UC2/UC2_before.jpg` and `UC2_after.jpg`.
+- `images/area1-*.jpg` are Sentinel-2 true-colour views of Area-1 (1 January and 12 March 2021). **Contains modified Copernicus Sentinel data.** `area1-boundary.jpg` and `area1-maize.jpg` also carry the on-image credit “Credit: European Union, contains modified Copernicus Sentinel data 2026, processed with Copernicus Browser”. The red layer in `area1-burn.jpg` is a dNBR candidate mask shown as “possibly burned”, not verified fire evidence.
+- The SVG field maps, document thumbnails and contour backgrounds in `images/` were drawn for this demo and contain no satellite data.
+
 ## Tailwind CSS
 
 The historical standalone HTML embeds compiled Tailwind CSS **v3.4.17**, identified by its existing header. Copyright © Tailwind Labs, Inc. MIT License. Full notice: [Tailwind-MIT.txt](frontend/assets/licenses/Tailwind-MIT.txt); [versioned upstream notice](https://github.com/tailwindlabs/tailwindcss/blob/v3.4.17/LICENSE).

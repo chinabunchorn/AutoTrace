@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package only the standalone pitch and its dependencies for GitHub Pages."""
+"""Package the standalone pitch, the design A demo and their dependencies for GitHub Pages."""
 import argparse
 from html.parser import HTMLParser
 from pathlib import Path
@@ -12,6 +12,8 @@ PITCH_FILES = (
     "factory.js", "suppliers.js", "evidence.js", "earth.svg", "satellite.svg",
 )
 LICENSES = ("DM-Sans-OFL.txt", "IBM-Plex-Sans-Thai-OFL.txt")
+# self-contained click-through demo (design A), published at demo-a/
+DEMO_DIR = "frontend/demo-a"
 ENTRY = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -38,7 +40,18 @@ def source_files(root):
         files[f"assets/{name}"] = assets / name
     for name in LICENSES:
         files[f"assets/licenses/{name}"] = assets / "licenses" / name
+    files.update(demo_files(root))
     return files
+
+
+def demo_files(root):
+    """The demo folder only holds what the demo page loads, so all of its files are published."""
+    demo = Path(root) / DEMO_DIR
+    return {
+        f"demo-a/{path.relative_to(demo).as_posix()}": path
+        for path in sorted(demo.rglob("*"))
+        if path.is_file() and path.name != ".DS_Store"
+    }
 
 
 class References(HTMLParser):
@@ -108,7 +121,7 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     files = build(root, args.out)
-    print(f"Validated {len(files)} presentation files in {args.out}")
+    print(f"Validated {len(files)} published files in {args.out}")
     for path in files:
         print(path)
 
