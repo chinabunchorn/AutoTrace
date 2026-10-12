@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Bangkok, over time.</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="pitch.css">
+  <script src="terrain.js" defer></script>
+  <script src="city.js" defer></script>
+  <script src="factory.js" defer></script>
+  <script src="suppliers.js" defer></script>
+  <script src="evidence.js" defer></script>
+  <script src="pitch.js" defer></script>
+</head>
+<body>
+<main id="stage" aria-label="Bangkok over time and a regional perspective">
+  <div id="world">
+  <div id="sky" aria-hidden="true"></div>
+  <div id="stars" aria-hidden="true"></div>
+  <div id="sun" aria-hidden="true"></div>
+  <div id="moon" aria-hidden="true"></div>
+  <div id="wisps" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div id="earth-backdrop" aria-hidden="true"></div>
+  <canvas id="terrain" aria-label="Illustrative low-poly regional terrain, not a measured geographic dataset"></canvas>
+  <div id="region-labels" aria-hidden="true"></div>
+  <div id="city" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="windows" width="18" height="23" patternUnits="userSpaceOnUse"><rect x="6" y="7" width="4" height="7" fill="#d2dfca" opacity=".52"/></pattern>
+        <linearGradient id="river" x2="0" y2="1"><stop stop-color="#96b5a5"/><stop offset="1" stop-color="#cbd9c8"/></linearGradient>
+        <linearGradient id="building" x2="1" y2="0"><stop stop-color="#5f806e"/><stop offset="1" stop-color="#416552"/></linearGradient>
+      </defs>
+      <g id="skyline-far" fill="#b5c8b7">
+        <path d="M0 620V536h48v-45h39v129h18V490h42v-40h44v170h17V520h67v-54h44v154h21V415h49v-33h42v238h37V506h61v114h23V453h46v167h34V530h47v-53h56v143h48V470h46v-78h26v228h33V500h73v120h33V450h35v-43h62v213h26V478h52v142h41V434h43v-43h31v229h29V500h62v120h27V468h78v152h39V515h88v105h46V460h57v160h87V530h58v90h100Z"/>
+      </g>
+      <g id="skyline-mid" fill="#8fa997">
+        <path d="M0 690V570h65v120h24V526h77v164h26V580h81v110h35V440h58v250h31V523h47v167h26V570h87v120h29V449h66v241h31V500h73v190h29V571h82v119h24V480h85v210h27V543h49v147h43V558h71v132h37V500h52v190h42V590h82v100h21V524h77v166h26V565h81v125h30V492h58v198h25V540h79v150h62V610h66v80h93Z"/>
+      </g>
+      <g fill="url(#building)">
+        <path d="M437 709V416h92v293Z"/><path d="M441 420l45-16 43 12v8h-92Z" fill="#93ae96"/>
+        <path d="M615 704V393h15v-52h14v-67h16v-44h15v-21h14v21h15v44h16v67h14v52h15v311Z"/>
+        <path d="M676 209V152h5v57Z" fill="#416552"/>
+        <path d="M876 724V407h12v-31h65v35h-18v27h18v28h-18v25h18v32h-18v24h28v177Z"/>
+        <path d="M963 724V359h16v-20h63v36h-20v31h20v30h-20v30h20v28h-20v33h20v197Z"/>
+        <path d="M1130 732V473h85v259Z"/><path d="M1130 474l43-23 42 23Z" fill="#9bb899"/>
+        <rect x="1280" y="526" width="101" height="206"/>
+      </g>
+      <g fill="url(#windows)"><rect x="443" y="439" width="79" height="270"/><rect x="630" y="395" width="104" height="304"/><rect x="881" y="551" width="77" height="163"/><rect x="970" y="539" width="66" height="183"/><rect x="1137" y="480" width="69" height="240"/><rect x="1287" y="532" width="89" height="181"/></g>
+      <g fill="#426852"><path d="M0 775V653h78v122h22V620h69v155h28V679h96v96h31V640h89v135h57V684h109v91h22V651h57v124h41V691h132v84h93V681h62v94h51V648h67v127h89V700h141v75h92V663h84v112h69V690h106v85h43V651h80v124h78Z"/></g>
+      <g transform="translate(210 615)"><path d="M-83 137h160v-69H-83Z" fill="#d8d2ab"/><path d="M-107 72l99-48 100 48-24 12H-83Z" fill="#9a6846"/><path d="M-73 22l66-38 66 38-15 13H-58Z" fill="#c29a61"/><path d="M-37-16l30-54 28 54Z" fill="#d8b773"/><path d="M-9-70V-94h5v24Z" fill="#d8b773"/><rect x="-17" y="101" width="27" height="36" fill="#7b7b54"/></g>
+      <path d="M0 799C276 744 470 796 641 761S1045 787 1173 766s300-1 427 36v98H0Z" fill="#365a43"/>
+      <path d="M0 854C325 799 465 867 716 819s434-9 591 29 216 27 293 10v42H0Z" fill="url(#river)"/>
+      <g fill="none" stroke="#e8eee0" stroke-width="2" opacity=".5"><path d="M790 841l160-3m-614 29 102 3m695 1 203 9"/><path d="M598 883l289-4m-803-34 98-4"/></g>
+      <g transform="translate(1195 851)"><path d="M-40 0h99l-20 9h-53Z" fill="#284f3c"/><path d="M-16-14h55v14h-55Z" fill="#d6c9a0"/><path d="M-22-15h66l-9-6h-48Z" fill="#b59060"/></g>
+    </svg>
+  </div>
+  <div id="city-lights" aria-hidden="true"></div>
+  <div id="haze" aria-hidden="true"><i></i><i></i></div>
+  <div id="pm-dust" aria-hidden="true"></div>
+  <div id="factory-scene" aria-hidden="true">
+    <canvas id="factory-canvas" aria-label="Authored fictional Factory A and businessman, not a real company or sourcing record"></canvas>
+    <span id="factory-sign">FACTORY A</span>
+  </div>
+  <div id="supply-scene" aria-hidden="true">
+    <svg id="supply-map" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fictional three-supplier network, not a geographic or logistics dataset"></svg>
+  </div>
+  <div id="cloud-pass" aria-hidden="true"></div>
+  <div id="paper-fade" aria-hidden="true"></div>
+  </div>
+  <div id="check-backdrop" aria-hidden="true"></div>
+  <section id="evidence-scene" aria-hidden="true" aria-label="Illustrated concept workflow, not a live assessment"></section>
+  <section id="month-panel" aria-label="Month in the story">
+    <span class="eyebrow">BANGKOK · TIME IN THE STORY</span>
+    <div id="month" aria-live="polite">October</div>
+  </section>
+  <section id="factory-claim" aria-live="polite" aria-hidden="true" lang="th">
+    <span class="eyebrow">Factory A · โรงงานสมมติ</span>
+    <p>“ข้าวโพดของเรา 100% มาจากแปลงที่ไม่เผา ในช่วงเวลาที่ระบุ”</p>
+  </section>
+  <section class="caption" aria-live="polite"><h1 id="title">Bangkok, over time.</h1><p id="description" lang="th">ภาพจำลองชีวิตเมือง…ในวันที่ฟ้ายังเปิด</p></section>
+</main>
+</body>
+</html>

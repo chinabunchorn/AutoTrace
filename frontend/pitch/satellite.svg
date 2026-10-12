@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 90">
+  <title>Decorative satellite silhouette</title>
+  <desc>Authored fictional spacecraft icon, not an observed satellite or tracking data.</desc>
+  <g transform="translate(75 48) rotate(-18)" stroke="#d3e2cd" stroke-width="1.3" opacity=".68">
+    <path d="M-42 0H42M0-13V-26M-7-27Q0-34 7-27" fill="none"/>
+    <rect x="-9" y="-14" width="18" height="28" rx="2" fill="#b3c7b2"/>
+    <g fill="#35594d"><rect x="-57" y="-13" width="38" height="26"/><rect x="19" y="-13" width="38" height="26"/></g>
+    <path d="M-45-13V13M-32-13V13M32-13V13M45-13V13M-57 0H-19M19 0H57" fill="none" opacity=".5"/>
+  </g>
+</svg>
