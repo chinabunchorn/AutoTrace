@@ -1,0 +1,71 @@
+/* full screen overlay between steps, the ring fills 1/3, 2/3, 3/3 */
+.ring-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40, 63, 36, 0.985);
+}
+
+.ring-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+/* start the circle from 12 o'clock instead of 3 o'clock */
+.ring svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  font-weight: 800;
+}
+
+.ring-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.ring-check {
+  color: var(--accent);
+}
+
+.ring-next {
+  font-size: 18px;
+  color: var(--on-dark-muted);
+  transition-delay: .1s;
+}
+
+.ring-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.ring-dots div {
+  width: 40px;
+  height: 6px;
+  transition: background-color .6s ease;
+}
