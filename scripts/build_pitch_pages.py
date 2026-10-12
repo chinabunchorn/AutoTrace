@@ -16,6 +16,7 @@ ENTRY = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AutoTrace — Interactive concept presentation</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="refresh" content="0;url=pitch/">
 </head><body><p><a href="pitch/">Open the AutoTrace presentation</a></p>
 <p>Desktop presentation. Click or press Space to advance; Left to return; R to restart; F for fullscreen.</p>

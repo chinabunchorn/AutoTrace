@@ -29,6 +29,7 @@ class PitchPagesTests(unittest.TestCase):
             self.assertNotIn("README.md", paths)
             self.assertFalse(any("usecase2" in path or path.startswith("data/") for path in paths))
             self.assertIn('url=pitch/', (output / "index.html").read_text())
+            self.assertIn('href="assets/favicon.svg"', (output / "index.html").read_text())
             self.assertEqual(
                 (output / "pitch/evidence.js").read_bytes(),
                 (ROOT / "frontend/pitch/evidence.js").read_bytes(),
